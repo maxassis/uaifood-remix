@@ -1,13 +1,21 @@
 import styles from "~/styles/autocomplete.css";
 import { useState } from "react";
-import axios from 'redaxios'
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-export default function Autocomplete() {
-  const arr = [];
+export default function Autocomplete({cities}) {
+  
+  cities && console.log(cities)
+  let arr = []
+
+  // let arr = cities.map((item) => {
+  //     return item.title
+  // })
+
+  // console.log(arr)
+  
 
   return (
     <div className="autocomplete__wrapper">
@@ -23,13 +31,18 @@ export default function Autocomplete() {
       </div>
 
       <div className="autocomplete__suggestions-wrapper">
-        {arr.map((item, index) => {
+{/* 
+        {arr && <span>teste</span>} */}
+
+
+
+         {cities && cities.map((item, index) => {
           return (
             <div className="autocomplete__suggestions" key={index}>
-              {item}
+              {item.title}
             </div>
           );
-        })}
+        })} 
       </div>
 
       {/* <div className="autocomplete__suggestions"></div> */}
