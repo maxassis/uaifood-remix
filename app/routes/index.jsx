@@ -28,7 +28,7 @@ export default function Index() {
               placeholder="Digite a sua cidade"
               type="text"
               className="home__input"
-            /> */}
+            />  */}
           <button className="home__button">BUSCAR</button>
         </Form>
       </div>
