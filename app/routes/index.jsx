@@ -19,7 +19,7 @@ export default function Index() {
 
       <div className="home__title-wrapper">
         <h1 className="home__title">
-          Descubra os melhores restaurantes em sua cidade
+          Descubra os melhores<br/> restaurantes em sua cidade
         </h1>
 
         <Form className="home__form">
