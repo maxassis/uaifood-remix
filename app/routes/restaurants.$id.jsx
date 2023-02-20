@@ -1,10 +1,14 @@
 import axios from "redaxios"
 import Header, { links as headerStyle } from "../components/header";
+import Card from "../components/Card";
 import { links as inputStyle } from "~/components/Autocomplete.jsx"
-
+import restaurants from "~/styles/restaurants.css"
+import cardStyle from "~/styles/card.css"
+ 
 
 export function links() {
-  return [...headerStyle(), ...inputStyle()];
+  return [{ rel: "stylesheet", href: restaurants }, { rel: "stylesheet", href: cardStyle },
+   ...headerStyle(), ...inputStyle()];
 }
 
 export const loader = async ({params}) => {
@@ -36,8 +40,27 @@ export default function Cities() {
     return (
       <>
       <Header />
-      
-      
+      <div className="restaurants__grid">
+        <div className="restaurants__left-menu" ></div>
+        <div className="restaurants__show-results" >
+            <h3 className="restaurants__title-city">Restaurantes em São Paulo</h3>
+            <div className="restaurants__results-grid">
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+                <Card />
+            </div>
+
+        </div>
+
+
+
+
+      </div>
       </>
 
 
