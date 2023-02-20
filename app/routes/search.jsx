@@ -12,7 +12,7 @@ export function links() {
 export const action = async ({ request }) => {
   const data = Object.fromEntries(await request.formData());
  
- const teste = await axios
+ const res = await axios
   .get(`https://developers.zomato.com/api/v2.1/locations?query=${data.city}`, {
     headers: {
       "user-key": "0f0709faa524595d78efbf821cc36f94",
@@ -21,14 +21,11 @@ export const action = async ({ request }) => {
   .then(response => response.data.location_suggestions)
   .catch(error => console.log(error.response));
 
-
-  return await teste
+  return await res
 };
-
 
 export default function Index() {
     const data = useActionData()
-    //console.log("teste",data);
 
   return (
     <div
@@ -43,7 +40,7 @@ export default function Index() {
         </h1>
 
         <Form method="post" className="home__form">
-            <Autocomplete cities={data} />
+            <Autocomplete cities={data} local="search" />
             {/* <input type="text" id="city" name="city" /> */}
             <button className="home__button">BUSCAR</button>
         </Form>
