@@ -41,7 +41,6 @@ export default function Index() {
 
         <Form method="post" className="home__form">
             <Autocomplete cities={data} local="search" />
-            {/* <input type="text" id="city" name="city" /> */}
             <button className="home__button">BUSCAR</button>
         </Form>
       </div>

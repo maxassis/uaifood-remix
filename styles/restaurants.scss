@@ -15,7 +15,7 @@
     }
 
     &__show-results { 
-        height: 100vh;
+        // height: 100vh;
     }
 
     &__title-city {
@@ -29,9 +29,6 @@
         gap: 30px 8px;
         grid-template-columns: 1fr 1fr 1fr;
         grid-auto-columns: auto;
-
+        margin-bottom: 60px;
     }
-
-
-
 }
