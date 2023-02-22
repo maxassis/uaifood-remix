@@ -6,12 +6,12 @@ export function links() {
 }
 
 export default function Autocomplete({ city, local }) {
-  
+  //console.log(city)  
+
   return (
-    <div className="autocomplete__wrapper" style={local == "header" ? {maxWidth: "70%"} : {maxWidth: "600px"} }>
+    <div className="autocomplete__wrapper" style={local == "header" ? {maxWidth: "75%"} : {maxWidth: "600px"} }>
       <div
-        className="autocomplete__icon-wrapper"
-        style={local == "header" ? {marginLeft: "20px"} : {marginLeft: "0"} }   
+        className="autocomplete__icon-wrapper" 
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +53,6 @@ export default function Autocomplete({ city, local }) {
       <div className="autocomplete__suggestions-wrapper">
         {city &&
           city.map((item, index) => {
-            console.log(item)
             return (
               <Link to={`/restaurants/${item.entity_id}`} key={index}>
                 <div className="autocomplete__suggestions">{item.title}</div>

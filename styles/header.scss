@@ -5,10 +5,14 @@
     border-bottom: 2px solid rgb(232, 232, 232);
     padding: 14px 35px 0 40px;
 
+    &__link {
+        margin-right: auto; 
+    }
+
     &__img {
     width: 130px;
     height: 48px;
-    margin-right: auto;
+    // margin-right: auto;
     }
 
     &__input {

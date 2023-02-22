@@ -4,7 +4,8 @@ import Card from "../components/Card";
 import { links as inputStyle } from "~/components/Autocomplete.jsx";
 import restaurants from "~/styles/restaurants.css";
 import cardStyle from "~/styles/card.css";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, Form, useActionData } from "@remix-run/react";
+//import { redirect } from "@remix-run/node";
 
 export function links() {
   return [
@@ -15,9 +16,26 @@ export function links() {
   ];
 }
 
+export const action = async ({ request }) => {
+  const data = Object.fromEntries(await request.formData());
+
+  const res = await axios
+  .get(`https://developers.zomato.com/api/v2.1/locations?query=${data.city}`, {
+    headers: {
+      "user-key": "0f0709faa524595d78efbf821cc36f94",
+    },
+  })
+  .then(response => {
+    return response.data.location_suggestions
+  })
+  .catch(error => console.log(error.response));
+
+  return await res  
+};
+
 export const loader = async ({ params }) => {
-  console.log(params);
-  console.log(params.id);
+  // console.log(params);
+  // console.log(params.id);
 
   const res = await axios
     .get(
@@ -29,7 +47,7 @@ export const loader = async ({ params }) => {
       }
     )
     .then((response) => {
-      console.log(response.data.best_rated_restaurant);
+     // console.log(response.data.best_rated_restaurant);
       return response.data;
     })
     .catch((error) => {
@@ -37,7 +55,7 @@ export const loader = async ({ params }) => {
     });
 
   const data = await res;
-  console.log(data);
+  //console.log(data);
 
   return {
     restaurants: data.best_rated_restaurant,
@@ -47,22 +65,26 @@ export const loader = async ({ params }) => {
 
 export default function Cities() {
   const { city, restaurants } = useLoaderData();
+  let data = useActionData()
+  console.log(restaurants);
 
   return (
     <>
-      <Header />
+     <Form method="post" >
+        <Header city={data}/>
+     </Form>    
       <div className="restaurants__grid">
-        <div className="restaurants__left-menu"></div>
+        <div className="restaurants__left-menu">
+        </div>
         <div className="restaurants__show-results">
           <h3 className="restaurants__title-city">
             Restaurantes em {city.city}
           </h3>
           <div className="restaurants__results-grid">
-            {restaurants && 
-                restaurants.map((item, index) => {
-                  return <Card restaurant={item} key={index}/>
-                })
-            }
+            {restaurants &&
+              restaurants.map((item, index) => {
+                return <Card restaurant={item} key={index} />;
+              })}
           </div>
         </div>
       </div>

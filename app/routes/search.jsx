@@ -19,13 +19,14 @@ export const action = async ({ request }) => {
     },
   })
   .then(response => {
-    console.log( response.data.location_suggestions)
+   // console.log( response.data.location_suggestions)
     return response.data.location_suggestions
   })
   .catch(error => console.log(error.response));
 
   return await res
 };
+
 
 export default function Index() {
     const data = useActionData()
