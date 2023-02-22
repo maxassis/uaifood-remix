@@ -5,12 +5,8 @@ export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-export default function Autocomplete({ cities, local }) {
-
-  let inputStyles = {
-    "border": "1px solid lightgray"
-  }
-
+export default function Autocomplete({ city, local }) {
+  
   return (
     <div className="autocomplete__wrapper" style={local == "header" ? {maxWidth: "70%"} : {maxWidth: "600px"} }>
       <div
@@ -50,15 +46,16 @@ export default function Autocomplete({ cities, local }) {
           id="city"
           name="city"
           required
-          style={local == "header" ? inputStyles : {"borderBottom": "1px solid lightgray"}}
+          style={local == "header" ? {"border": "1px solid lightgray"} : {"borderBottom": "1px solid lightgray"}}
         />
       </div>
 
       <div className="autocomplete__suggestions-wrapper">
-        {cities &&
-          cities.map((item, index) => {
+        {city &&
+          city.map((item, index) => {
+            console.log(item)
             return (
-              <Link to="/restaurants/73" key={index}>
+              <Link to={`/restaurants/${item.entity_id}`} key={index}>
                 <div className="autocomplete__suggestions">{item.title}</div>
               </Link>
             );

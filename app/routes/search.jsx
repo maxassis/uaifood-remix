@@ -18,7 +18,10 @@ export const action = async ({ request }) => {
       "user-key": "0f0709faa524595d78efbf821cc36f94",
     },
   })
-  .then(response => response.data.location_suggestions)
+  .then(response => {
+    console.log( response.data.location_suggestions)
+    return response.data.location_suggestions
+  })
   .catch(error => console.log(error.response));
 
   return await res
@@ -26,6 +29,7 @@ export const action = async ({ request }) => {
 
 export default function Index() {
     const data = useActionData()
+   // data && console.log(data[0].entity_id)
 
   return (
     <div
@@ -40,7 +44,7 @@ export default function Index() {
         </h1>
 
         <Form method="post" className="home__form">
-            <Autocomplete cities={data} local="search" />
+            <Autocomplete city={data} local="search" />
             <button className="home__button">BUSCAR</button>
         </Form>
       </div>
