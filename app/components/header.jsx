@@ -7,9 +7,9 @@ export function links() {
     return [{ rel: "stylesheet", href: styles }];
   }
   
-export default function Header({city}) {
+export default function Header({city, tt}) {
   // city && console.log(city)
-
+   
 
    return (
     <div className="header">
@@ -18,8 +18,6 @@ export default function Header({city}) {
        </Link> 
        <Autocomplete local="header" city={city}/>
        <button className="header__button">BUSCAR</button>
-
-
     </div>
    )
 }

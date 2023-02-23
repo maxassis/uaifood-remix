@@ -1,11 +1,12 @@
+import { useState, useEffect } from "react";
 import axios from "redaxios";
 import Header, { links as headerStyle } from "../components/header";
 import Card from "../components/Card";
+import LeftBar, { links as leftBarStyle} from "../components/leftBar";
 import { links as inputStyle } from "~/components/Autocomplete.jsx";
 import restaurants from "~/styles/restaurants.css";
 import cardStyle from "~/styles/card.css";
 import { useLoaderData, Form, useActionData } from "@remix-run/react";
-//import { redirect } from "@remix-run/node";
 
 export function links() {
   return [
@@ -13,6 +14,7 @@ export function links() {
     { rel: "stylesheet", href: cardStyle },
     ...headerStyle(),
     ...inputStyle(),
+    ...leftBarStyle()
   ];
 }
 
@@ -64,25 +66,30 @@ export const loader = async ({ params }) => {
 };
 
 export default function Cities() {
-  const { city, restaurants } = useLoaderData();
+  let { city, restaurants } = useLoaderData();
   let data = useActionData()
-  console.log(restaurants);
+  const [estabelecimentos, setEstabelecimentos] = useState()
+
+  useEffect(() => {
+    setEstabelecimentos(restaurants)
+  },[restaurants])
 
   return (
     <>
      <Form method="post" >
-        <Header city={data}/>
+        <Header city={data} />
      </Form>    
       <div className="restaurants__grid">
         <div className="restaurants__left-menu">
+          <LeftBar />
         </div>
         <div className="restaurants__show-results">
           <h3 className="restaurants__title-city">
             Restaurantes em {city.city}
           </h3>
           <div className="restaurants__results-grid">
-            {restaurants &&
-              restaurants.map((item, index) => {
+            {estabelecimentos &&
+              estabelecimentos.map((item, index) => {
                 return <Card restaurant={item} key={index} />;
               })}
           </div>
