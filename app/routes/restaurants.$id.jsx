@@ -36,9 +36,6 @@ export const action = async ({ request }) => {
 };
 
 export const loader = async ({ params }) => {
-  // console.log(params);
-  // console.log(params.id);
-
   const res = await axios
     .get(
       `https://developers.zomato.com/api/v2.1/location_details?entity_id=${params.id}&entity_type=city`,
@@ -74,6 +71,7 @@ export default function Cities() {
     setEstabelecimentos(restaurants)
   },[restaurants])
 
+  
   return (
     <>
      <Form method="post" >
