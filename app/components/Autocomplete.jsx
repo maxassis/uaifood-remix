@@ -1,11 +1,17 @@
 import styles from "~/styles/autocomplete.css";
 import { Link } from "@remix-run/react";
+import { useNavigation } from "@remix-run/react"
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
 export default function Autocomplete({ city, local }) {
+   const navigation = useNavigation();
+  
+    const isSubmitting = navigation.state === "submitting"
+
+
  
   return (
     <div className="autocomplete__wrapper" style={local == "header" ? {maxWidth: "75%"} : {maxWidth: "600px"} }>
@@ -54,7 +60,7 @@ export default function Autocomplete({ city, local }) {
           city.map((item, index) => {
             return (
               <Link to={`/restaurants/${item.entity_id}`} key={index}>
-                <div className="autocomplete__suggestions">{item.title}</div>
+                <div className="autocomplete__suggestions">{isSubmitting ? "Carregando..." : item.title}</div>
               </Link>
             );
           })}

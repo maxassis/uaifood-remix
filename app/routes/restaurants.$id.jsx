@@ -46,7 +46,6 @@ export const loader = async ({ params }) => {
       }
     )
     .then((response) => {
-     // console.log(response.data.best_rated_restaurant);
       return response.data;
     })
     .catch((error) => {
@@ -54,7 +53,6 @@ export const loader = async ({ params }) => {
     });
 
   const data = await res;
-  //console.log(data);
 
   return {
     restaurants: data.best_rated_restaurant,
@@ -62,29 +60,76 @@ export const loader = async ({ params }) => {
   };
 };
 
+
 export default function Cities() {
   let { city, restaurants } = useLoaderData();
   let data = useActionData()
   const [estabelecimentos, setEstabelecimentos] = useState()
-  const [stars, setStars] = useState("")
   const [price, setPrice] = useState("")
-
-
+  const [stars, setStars] = useState("")
+  
   useEffect(() => {
     setEstabelecimentos(restaurants)
   },[restaurants])
 
-  function countStars(x) {
-    setStars(x)
+  function filterStars(num) {
+    const tt = restaurants.filter((item) => {
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+    });
+    setEstabelecimentos(tt);
   }
 
-  function countPrice(x) {
-    setPrice(x)
-  }  
-
+ function filterPrice50() {
+    const tt = restaurants.filter((item) => {
+      if (item.restaurant.average_cost_for_two < "50") return item;
+    });
+    console.log(tt);
+    setEstabelecimentos(tt);
+  }
+  
+  function filterPrice50_80() {
+    const tt = restaurants.filter((item) => {
+      if (
+        item.restaurant.average_cost_for_two > "50" &&
+        item.restaurant.average_cost_for_two < "80"
+      )
+        return item;
+    });
+    console.log(tt);
+    setEstabelecimentos(tt);
+  }
+  
+ function filterPrice80_110() {
+    const tt = restaurants.filter((item) => {
+      if (
+        item.restaurant.average_cost_for_two > "80" &&
+        item.restaurant.average_cost_for_two < "80"
+      )
+        return item;
+    });
+    console.log(tt);
+    setEstabelecimentos(tt);
+  }
+  
+ function filterPrice110() {
+    const tt = restaurants.filter((item) => {
+      if (item.restaurant.average_cost_for_two > "110") return item;
+    });
+    console.log(tt);
+    setEstabelecimentos(tt);
+  }
 
   console.log(price)
-  console.log(stars)
+
 
   return (
     <>
@@ -93,10 +138,12 @@ export default function Cities() {
      </Form>    
       <div className="restaurants__grid">
         <div className="restaurants__left-menu">
-          <LeftBar fn={countStars} fn2={countPrice} />
+          <LeftBar stars={filterStars} price50={filterPrice50} price50_80={filterPrice50_80} price80_110={filterPrice80_110} price110={filterPrice110}
+          price={setPrice} stars2={setStars}
+          />
         </div>
         <div className="restaurants__show-results">
-          <h3 className="restaurants__title-city">
+          <h3 className="restaurants__title-city" >
             Restaurantes em {city.city}
           </h3>
           <div className="restaurants__results-grid">
