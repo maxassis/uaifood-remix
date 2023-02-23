@@ -66,12 +66,26 @@ export default function Cities() {
   let { city, restaurants } = useLoaderData();
   let data = useActionData()
   const [estabelecimentos, setEstabelecimentos] = useState()
+  const [stars, setStars] = useState("")
+  const [price, setPrice] = useState("")
+
 
   useEffect(() => {
     setEstabelecimentos(restaurants)
   },[restaurants])
 
-  
+  function countStars(x) {
+    setStars(x)
+  }
+
+  function countPrice(x) {
+    setPrice(x)
+  }  
+
+
+  console.log(price)
+  console.log(stars)
+
   return (
     <>
      <Form method="post" >
@@ -79,7 +93,7 @@ export default function Cities() {
      </Form>    
       <div className="restaurants__grid">
         <div className="restaurants__left-menu">
-          <LeftBar />
+          <LeftBar fn={countStars} fn2={countPrice} />
         </div>
         <div className="restaurants__show-results">
           <h3 className="restaurants__title-city">
