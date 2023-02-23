@@ -56,7 +56,7 @@ export default function leftBar() {
 
             <label className="leftBar__label">
             <input type="checkbox" className="leftBar__input" />
-            <span className="leftBar__price">De R$50 a R$180</span>  
+            <span className="leftBar__price">De R$50 a R$80</span>  
             </label>
 
             <label className="leftBar__label">

@@ -16,7 +16,7 @@ export default function Header({city, tt}) {
        <Link to={"/"} className="header__link" > 
        <img className="header__img" src={logoRed} alt="logo red" /> 
        </Link> 
-       <Autocomplete local="header" city={city}/>
+       <Autocomplete local="header" city={city} style={{height: "35px"}}/>
        <button className="header__button">BUSCAR</button>
     </div>
    )

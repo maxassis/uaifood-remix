@@ -6,8 +6,7 @@ export function links() {
 }
 
 export default function Autocomplete({ city, local }) {
-  //console.log(city)  
-
+ 
   return (
     <div className="autocomplete__wrapper" style={local == "header" ? {maxWidth: "75%"} : {maxWidth: "600px"} }>
       <div

@@ -50,5 +50,11 @@
     padding: 10px 15px;
     color: #484848;
     cursor: pointer;
+
+    &:hover {
+      background-color: lighten(lightgray, 10%);
+    }
+
+
   }
 }
