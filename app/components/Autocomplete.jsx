@@ -8,12 +8,8 @@ export function links() {
 
 export default function Autocomplete({ city, local }) {
    const navigation = useNavigation();
-   console.log(navigation.state)
-  
-    const isSubmitting = navigation.state === "loading"
+   const isSubmitting = navigation.state === "loading"
 
-
- 
   return (
     <div className="autocomplete__wrapper" style={local == "header" ? {maxWidth: "75%"} : {maxWidth: "600px"} }>
       <div
@@ -58,7 +54,7 @@ export default function Autocomplete({ city, local }) {
 
       <div className="autocomplete__suggestions-wrapper">
         {city &&
-          city.map((item, index) => {
+          city.map((item, index, arr) => {
             return (
               <Link to={`/restaurants/${item.entity_id}`} key={index} prefetch="intent" rel="preload">
                 <div className="autocomplete__suggestions">{isSubmitting ? "Carregando..." : item.title}</div>
