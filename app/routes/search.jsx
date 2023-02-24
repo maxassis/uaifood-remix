@@ -19,7 +19,6 @@ export const action = async ({ request }) => {
     },
   })
   .then(response => {
-   // console.log( response.data.location_suggestions)
     return response.data.location_suggestions
   })
   .catch(error => console.log(error.response));
@@ -30,8 +29,7 @@ export const action = async ({ request }) => {
 
 export default function Index() {
     const data = useActionData()
-   // data && console.log(data[0].entity_id)
-
+  
   return (
     <div
       className="home__container"

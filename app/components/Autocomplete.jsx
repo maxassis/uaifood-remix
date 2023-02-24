@@ -8,8 +8,9 @@ export function links() {
 
 export default function Autocomplete({ city, local }) {
    const navigation = useNavigation();
+   console.log(navigation.state)
   
-    const isSubmitting = navigation.state === "submitting"
+    const isSubmitting = navigation.state === "loading"
 
 
  
@@ -59,7 +60,7 @@ export default function Autocomplete({ city, local }) {
         {city &&
           city.map((item, index) => {
             return (
-              <Link to={`/restaurants/${item.entity_id}`} key={index}>
+              <Link to={`/restaurants/${item.entity_id}`} key={index} prefetch="intent" rel="preload">
                 <div className="autocomplete__suggestions">{isSubmitting ? "Carregando..." : item.title}</div>
               </Link>
             );

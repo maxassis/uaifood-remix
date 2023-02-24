@@ -74,9 +74,8 @@ export default function Cities() {
 
 
 
- function teste(num){
-  // console.log(num)
-
+ function teste(num, price){
+ 
  function filterStars(num) {
     const tt = restaurants.filter((item) => {
       if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
@@ -94,49 +93,59 @@ export default function Cities() {
   }
   filterStars(num)
   
-
-//  function filterPrice50() {
-//     const tt = restaurants.filter((item) => {
-//       if (item.restaurant.average_cost_for_two < "50") return item;
-//     });
-//     console.log(tt);
-//     setEstabelecimentos(tt);
-//   }
+  if (price == "50") {
+    function filterPrice50() {
+      const tt = restaurants.filter((item) => {
+        if (item.restaurant.average_cost_for_two <= "50") return item;
+      });
+      setEstabelecimentos(tt);
+    }
+    filterPrice50();
+  }
   
-//   function filterPrice50_80() {
-//     const tt = restaurants.filter((item) => {
-//       if (
-//         item.restaurant.average_cost_for_two > "50" &&
-//         item.restaurant.average_cost_for_two < "80"
-//       )
-//         return item;
-//     });
-//     console.log(tt);
-//     setEstabelecimentos(tt);
-//   }
+  if(price == "50_80") {
+  function filterPrice50_80() {
+    const tt = restaurants.filter((item) => {
+      if (
+        item.restaurant.average_cost_for_two >= "50" &&
+        item.restaurant.average_cost_for_two <= "80"
+      )
+        return item;
+    });
+    console.log(tt);
+    setEstabelecimentos(tt);
+  }
+  filterPrice50_80()
+}
   
-//  function filterPrice80_110() {
-//     const tt = restaurants.filter((item) => {
-//       if (
-//         item.restaurant.average_cost_for_two > "80" &&
-//         item.restaurant.average_cost_for_two < "80"
-//       )
-//         return item;
-//     });
-//     console.log(tt);
-//     setEstabelecimentos(tt);
-//   }
-  
-//  function filterPrice110() {
-//     const tt = restaurants.filter((item) => {
-//       if (item.restaurant.average_cost_for_two > "110") return item;
-//     });
-//     console.log(tt);
-//     setEstabelecimentos(tt);
-//   }
+if (price == "80_110") {
+ function filterPrice80_110() {
+    const tt = restaurants.filter((item) => {
+      if (
+        item.restaurant.average_cost_for_two >= "80" &&
+        item.restaurant.average_cost_for_two <= "110"
+      )
+        return item;
+    });
+    console.log(tt);
+    setEstabelecimentos(tt);
+  }
+  filterPrice80_110()
 }
 
-   //console.log(stars)
+if(price == "110") {
+ function filterPrice110() {
+    const tt = restaurants.filter((item) => {
+      if (item.restaurant.average_cost_for_two > "110") return item;
+    });
+    console.log(tt);
+    setEstabelecimentos(tt);
+  }
+  filterPrice110()
+}
+}
+
+  //  console.log(stars)
 
 
   return (
