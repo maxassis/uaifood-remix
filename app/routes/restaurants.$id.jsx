@@ -72,63 +72,71 @@ export default function Cities() {
     setEstabelecimentos(restaurants)
   },[restaurants])
 
-  function filterStars(num) {
-    const tt = restaurants.filter((item) => {
-      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
-        return item;
-      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
-        return item;
-      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
-        return item;
-      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
-        return item;
-      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
-        return item;
-    });
-    setEstabelecimentos(tt);
-  }
 
- function filterPrice50() {
-    const tt = restaurants.filter((item) => {
-      if (item.restaurant.average_cost_for_two < "50") return item;
-    });
-    console.log(tt);
-    setEstabelecimentos(tt);
-  }
-  
-  function filterPrice50_80() {
-    const tt = restaurants.filter((item) => {
-      if (
-        item.restaurant.average_cost_for_two > "50" &&
-        item.restaurant.average_cost_for_two < "80"
-      )
-        return item;
-    });
-    console.log(tt);
-    setEstabelecimentos(tt);
-  }
-  
- function filterPrice80_110() {
-    const tt = restaurants.filter((item) => {
-      if (
-        item.restaurant.average_cost_for_two > "80" &&
-        item.restaurant.average_cost_for_two < "80"
-      )
-        return item;
-    });
-    console.log(tt);
-    setEstabelecimentos(tt);
-  }
-  
- function filterPrice110() {
-    const tt = restaurants.filter((item) => {
-      if (item.restaurant.average_cost_for_two > "110") return item;
-    });
-    console.log(tt);
-    setEstabelecimentos(tt);
-  }
 
-  console.log(price)
+ function teste(num){
+  // console.log(num)
+
+ function filterStars(num) {
+    const tt = restaurants.filter((item) => {
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+      if (parseInt(item.restaurant.user_rating.aggregate_rating) == num)
+        return item;
+    });
+    setEstabelecimentos(tt);
+  }
+  filterStars(num)
+  
+
+//  function filterPrice50() {
+//     const tt = restaurants.filter((item) => {
+//       if (item.restaurant.average_cost_for_two < "50") return item;
+//     });
+//     console.log(tt);
+//     setEstabelecimentos(tt);
+//   }
+  
+//   function filterPrice50_80() {
+//     const tt = restaurants.filter((item) => {
+//       if (
+//         item.restaurant.average_cost_for_two > "50" &&
+//         item.restaurant.average_cost_for_two < "80"
+//       )
+//         return item;
+//     });
+//     console.log(tt);
+//     setEstabelecimentos(tt);
+//   }
+  
+//  function filterPrice80_110() {
+//     const tt = restaurants.filter((item) => {
+//       if (
+//         item.restaurant.average_cost_for_two > "80" &&
+//         item.restaurant.average_cost_for_two < "80"
+//       )
+//         return item;
+//     });
+//     console.log(tt);
+//     setEstabelecimentos(tt);
+//   }
+  
+//  function filterPrice110() {
+//     const tt = restaurants.filter((item) => {
+//       if (item.restaurant.average_cost_for_two > "110") return item;
+//     });
+//     console.log(tt);
+//     setEstabelecimentos(tt);
+//   }
+}
+
+   //console.log(stars)
 
 
   return (
@@ -138,8 +146,7 @@ export default function Cities() {
      </Form>    
       <div className="restaurants__grid">
         <div className="restaurants__left-menu">
-          <LeftBar stars={filterStars} price50={filterPrice50} price50_80={filterPrice50_80} price80_110={filterPrice80_110} price110={filterPrice110}
-          price={setPrice} stars2={setStars}
+          <LeftBar price={setPrice} stars={setStars} filter={teste}
           />
         </div>
         <div className="restaurants__show-results">
