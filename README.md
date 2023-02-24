@@ -10,8 +10,9 @@ https://uaifood-remix.netlify.app/
 
 ## Telas
 
-https://github.com/maxassis/uaifood-remix/blob/master/app/assets/Captura%20de%20tela%20de%202023-02-24%2012-34-58%20(1).png?raw=true
+![](https://raw.githubusercontent.com/maxassis/uaifood-remix/master/app/assets/Captura%20de%20tela%20de%202023-02-24%2012-34-58%20(1).png?token=GHSAT0AAAAAAB42RDDNBFJSRXEQR644JSLCY7Y32NQ)]
 
-https://github.com/maxassis/uaifood-remix/blob/master/app/assets/Captura%20de%20tela%20de%202023-02-24%2012-35-17.png?raw=true
+![](https://raw.githubusercontent.com/maxassis/uaifood-remix/master/app/assets/Captura%20de%20tela%20de%202023-02-24%2012-35-17.png?token=GHSAT0AAAAAAB42RDDMOE23CJZFGL4ACHQCY7Y33IQ)]
+
 
 
