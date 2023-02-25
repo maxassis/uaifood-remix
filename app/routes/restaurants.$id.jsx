@@ -7,7 +7,6 @@ import { links as inputStyle } from "~/components/Autocomplete.jsx";
 import restaurants from "~/styles/restaurants.css";
 import cardStyle from "~/styles/card.css";
 import { useLoaderData, Form, useActionData } from "@remix-run/react";
-import { json } from "@remix-run/node";
 
 export function links() {
   return [
@@ -36,7 +35,9 @@ export const action = async ({ request }) => {
     })
     .catch((error) => console.log(error.response));
 
-  const returnData = await res;
+  let returnData = await res;
+
+  if (!returnData[0]?.title) returnData = {noCity: true}
 
   return returnData;
 };
@@ -150,7 +151,7 @@ export default function Cities() {
   return (
     <>
       <Form method="post">
-        <Header city={data} noCity={restaurants.lenght == 0 ? false : true} />
+        <Header city={Array.isArray(data) ? data : []} noCity={data?.noCity}  />
       </Form>
       <div className="restaurants__grid">
         <div className="restaurants__left-menu">
