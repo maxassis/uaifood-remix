@@ -1,12 +1,12 @@
 import styles from "~/styles/autocomplete.css";
-import { Link } from "@remix-run/react";
-import { useNavigation } from "@remix-run/react"
+import { Link, useNavigation  } from "@remix-run/react";
+
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-export default function Autocomplete({ city, local }) {
+export default function Autocomplete({ city, local, noCity}) {
    const navigation = useNavigation();
    const isSubmitting = navigation.state === "loading"
 
@@ -53,11 +53,13 @@ export default function Autocomplete({ city, local }) {
       </div>
 
       <div className="autocomplete__suggestions-wrapper">
+      {noCity && <div className="autocomplete__suggestions">Cidade não encontrada</div> } 
+          
         {city &&
           city.map((item, index, arr) => {
             return (
               <Link to={`/restaurants/${item.entity_id}`} key={index} prefetch="intent" rel="preload">
-                <div className="autocomplete__suggestions">{isSubmitting ? "Carregando..." : item.title}</div>
+                <div className="autocomplete__suggestions">{isSubmitting ? "Carregando..." : item.title}</div> 
               </Link>
             );
           })}
