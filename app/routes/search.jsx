@@ -1,5 +1,5 @@
 import styles from "~/styles/home.css";
-import back from "~/assets/back.webp";
+import back from "public/images/back.avif"
 import logoWhite from "~/assets/logo-white.jpg";
 import { useActionData, Form } from "@remix-run/react";
 import Autocomplete , { links as inputStyle } from "~/components/Autocomplete.jsx"
