@@ -1,5 +1,11 @@
+// import { redirect } from "@remix-run/node";
+
+// export const loader = async () => {
+//   return redirect("/search")    
+// };
+
 import styles from "~/styles/home.css";
-import back from "public/images/back.avif"
+import back from "public/images/back3.avif"
 import logoWhite from "~/assets/logo-white.jpg";
 import { useActionData, Form } from "@remix-run/react";
 import Autocomplete , { links as inputStyle } from "~/components/Autocomplete.jsx"
@@ -54,3 +60,6 @@ export default function Index() {
     </div>
   );
 }
+
+
+
