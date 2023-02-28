@@ -1,9 +1,3 @@
-// import { redirect } from "@remix-run/node";
-
-// export const loader = async () => {
-//   return redirect("/search")    
-// };
-
 import styles from "~/styles/home.css";
 import back from "public/images/back3.avif"
 import logoWhite from "~/assets/logo-white.jpg";
