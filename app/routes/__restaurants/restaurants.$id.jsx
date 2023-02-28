@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "redaxios";
-import Header, { links as headerStyle } from "../components/header";
-import Card from "../components/Card";
-import LeftBar, { links as leftBarStyle } from "../components/leftBar";
+import Header, { links as headerStyle } from "~/components/header";
+import Card from "~/components/Card";
+import LeftBar, { links as leftBarStyle } from "~/components/leftBar";
 import { links as inputStyle } from "~/components/Autocomplete.jsx";
 import restaurants from "~/styles/restaurants.css";
 import cardStyle from "~/styles/card.css";
